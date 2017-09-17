@@ -42,7 +42,7 @@ public class Account{
     }
     
     public double deposit(double ammount){
-        
+        this.balance = balance + ammount;
         return balance;
     }
     
@@ -56,6 +56,10 @@ public class Account{
     
     public int getIDAccount(){
         return this.IDaccount;
+    }
+    
+    public String getType(){
+        return this.typeAccount;
     }
     
     public String toString(){

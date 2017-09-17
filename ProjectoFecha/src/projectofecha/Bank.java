@@ -42,6 +42,18 @@ public class Bank{
         return flag;
     }
     
+    public boolean editCustomer(int IDcustomer,String firstName, String lastName){
+        boolean flag = false;
+            for(int i = 0; i < numberOfCustomers; i++){
+                if(clients[i].getIDCustomer() == IDcustomer){
+                    clients[i].setFirstName(firstName);
+                    clients[i].setLastName(lastName);
+                }
+            }
+        
+        return flag;
+    }
+    
     public Customer searchClient(int IDClient){
         Customer temp = null;
         for(Customer client: clients){

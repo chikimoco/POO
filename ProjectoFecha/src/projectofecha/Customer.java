@@ -88,9 +88,20 @@ public class Customer{
         return searchAccount(IDAccount);
     }
     
+    public boolean editAccount(int IDAccount,int balance){
+        boolean flag = false;
+            for(int i = 0; i < numberOfAccounts; i++){
+                if(accounts[i].getIDAccount() == IDAccount){
+                    accounts[i].setBalance(balance);
+                    flag = true;
+                    break;
+                }
+            }
+        return flag;
+    }
     
     
-    
+    @Override
     public boolean equals(Object obj){
         boolean flag = false;
         if (obj != null && obj instanceof Customer){
@@ -114,6 +125,43 @@ public class Customer{
                 }
         return output;
     }
+    
+    public boolean myTransferDD(int IDSender, int IDReciever, double ammount){
+        Account sender, reciever;
+        boolean flag = false;
+        sender = searchAccount(IDSender);
+        if(!"DEBIT".equals(sender.getType())){
+            sender = null;
+        }
+        reciever = searchAccount(IDReciever);
+        if(!"DEBIT".equals(reciever.getType())){
+            reciever = null;
+        }
+        if((sender != null)&&(reciever != null)&&(sender.getBalance()>=ammount)){
+            sender.withdraw(ammount);
+            reciever.deposit(ammount);
+            flag = true;
+        }
+        return flag;
+}
+    public boolean myTransferDC(int IDSender, int IDReciever, double ammount){
+        Account sender, reciever;
+        boolean flag = false;
+        sender = searchAccount(IDSender);
+        if(!"DEBIT".equals(sender.getType())){
+            sender = null;
+        }
+        reciever = searchAccount(IDReciever);
+        if(!"CREDIT".equals(reciever.getType())){
+            reciever = null;
+        }
+        if((sender != null)&&(reciever != null)&&(sender.getBalance()>=ammount)){
+            sender.withdraw(ammount);
+            reciever.deposit(ammount);
+            flag = true;
+        }
+        return flag;
+}
 
 }                               
 
