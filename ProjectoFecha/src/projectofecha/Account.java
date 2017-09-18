@@ -13,7 +13,7 @@ package projectofecha;
  * @AUTHORS: POO FMAT 
  */
 public class Account{                           
-    public static final String  CREDIT= "CREDIT";
+    public static final String CREDIT= "CREDIT";
     public static final String DEBIT = "DEBIT";
     
     private static int IDkey;
@@ -35,14 +35,22 @@ public class Account{
     }
     */
     public double withdraw(double ammount){
-        if(balance>=ammount){
+        if(balance>=ammount&&typeAccount.equals(DEBIT)){
             balance = balance - ammount;
+        }
+        else if("CREDIT".equals(typeAccount)){
+            balance = balance + ammount;
         }
         return balance;
     }
     
     public double deposit(double ammount){
-        this.balance = balance + ammount;
+        if(balance>ammount&&typeAccount.equals(CREDIT)){
+            this.balance = this.balance - ammount;
+        }
+        else{
+            this.balance = this.balance + ammount;
+        }
         return balance;
     }
     

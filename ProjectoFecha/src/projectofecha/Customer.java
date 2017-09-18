@@ -76,10 +76,12 @@ public class Customer{
     
     public Account searchAccount(int IDAccount){
         Account temp = null;
+        if(accounts != null){
         for(Account account: accounts){
             if(account.getIDAccount() == IDAccount){
                 temp = account;
             }
+        }
         }
         return temp;
     }
@@ -127,13 +129,21 @@ public class Customer{
     }
     
     public boolean myTransferDD(int IDSender, int IDReciever, double ammount){
-        Account sender, reciever;
+        Account sender = null;
+        Account reciever = null;
+        int i;
         boolean flag = false;
-        sender = searchAccount(IDSender);
+        for(i = 0;i < numberOfAccounts;i++){
+            if(accounts[i].getIDAccount()==IDSender){
+                sender = accounts[i];
+            }
+            if(accounts[i].getIDAccount()==IDReciever){
+                reciever = accounts[i];
+            }
+        }
         if(!"DEBIT".equals(sender.getType())){
             sender = null;
         }
-        reciever = searchAccount(IDReciever);
         if(!"DEBIT".equals(reciever.getType())){
             reciever = null;
         }
@@ -145,13 +155,21 @@ public class Customer{
         return flag;
 }
     public boolean myTransferDC(int IDSender, int IDReciever, double ammount){
-        Account sender, reciever;
+        Account sender = null;
+        Account reciever = null;
+        int i;
         boolean flag = false;
-        sender = searchAccount(IDSender);
+        for(i = 0;i < numberOfAccounts;i++){
+            if(accounts[i].getIDAccount()==IDSender){
+                sender = accounts[i];
+            }
+            if(accounts[i].getIDAccount()==IDReciever){
+                reciever = accounts[i];
+            }
+        }
         if(!"DEBIT".equals(sender.getType())){
             sender = null;
         }
-        reciever = searchAccount(IDReciever);
         if(!"CREDIT".equals(reciever.getType())){
             reciever = null;
         }
