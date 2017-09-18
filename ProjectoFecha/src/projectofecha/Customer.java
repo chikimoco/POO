@@ -35,6 +35,11 @@ public class Customer{
     public int getIDCustomer(){
         return IDCustomer;
     }
+    
+    public int getNumberOfAccounts(){
+        return numberOfAccounts;
+    }
+    
     public void setFirstName(String firstName){
         this.firstName = firstName;
     }
@@ -88,6 +93,10 @@ public class Customer{
     
     public Account getAccount(int IDAccount){                
         return searchAccount(IDAccount);
+    }
+    
+    public Account[] getAccounts(){
+        return accounts;
     }
     
     public boolean editAccount(int IDAccount,int balance){
@@ -179,7 +188,39 @@ public class Customer{
             flag = true;
         }
         return flag;
-}
+
+    }
+    
+    public boolean thirdTransferDD(int IDSender, Customer rCustomer, int IDReciever, double ammount){
+        boolean flag = false;
+        Account sender = null;
+        Account reciever = null;
+        int i;
+        Account rAccounts[] = null;
+        rAccounts = rCustomer.getAccounts();
+        for(i = 0;i < numberOfAccounts;i++){
+            if(accounts[i].getIDAccount()==IDSender){
+                sender = accounts[i];
+            }
+        }
+        for(i = 0;i < rCustomer.getNumberOfAccounts();i++){
+             if(rAccounts[i].getIDAccount()==IDReciever){
+                reciever = rAccounts[i];
+            }
+        }
+        if(!"DEBIT".equals(sender.getType())){
+            sender = null;
+        }
+        if(!"DEBIT".equals(reciever.getType())){
+            reciever = null;
+        }
+        if((sender != null)&&(reciever != null)&&(sender.getBalance()>=ammount)){
+            sender.withdraw(ammount);
+            reciever.deposit(ammount);
+            flag = true;
+        }
+        return flag;
+    }
 
 }                               
 

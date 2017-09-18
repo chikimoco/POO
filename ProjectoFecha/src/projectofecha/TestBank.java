@@ -44,6 +44,8 @@ public class TestBank {
        System.out.println(narcobanco);
        
        client2.myTransferDD(2, 3, 500);
+       client2.myTransferDC(2, 4, 500);
+       client1.thirdTransferDD(0, client5, 7, 1000);
        System.out.println("\n********\n");
        System.out.println(narcobanco);
        
