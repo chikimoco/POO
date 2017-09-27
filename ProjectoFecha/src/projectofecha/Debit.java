@@ -14,5 +14,17 @@ public class Debit extends Account {
     public Debit(String typeAccount, double balance) {
         super(typeAccount, balance);
     }
+    
+    public double withdraw(double ammount){
+        if (balance >= ammount) {
+            balance = balance - ammount;
+        }
+        return balance;
+    }
+    
+    public double deposit(double ammount) {
+        this.balance = this.balance + ammount;
+        return balance;
+    }
  
 }

@@ -15,4 +15,13 @@ public class Credit extends Account {
         super(typeAccount, balance);
     }
  
+    public double withdraw(double ammount){
+        balance = balance + ammount;
+        return balance;
+    }
+    
+    public double deposit(double ammount){
+        this.balance = this.balance - ammount;
+        return balance;
+    }
 }
