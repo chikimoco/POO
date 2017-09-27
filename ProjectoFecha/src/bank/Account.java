@@ -1,4 +1,4 @@
-package projectofecha;
+package bank;
 
 /**
  * Class Account
@@ -22,6 +22,10 @@ public class Account{
      * @param typeAccount type of account
      * @param balance balance of the account
      */
+    public Account (int id){
+        this.IDaccount = id;
+        IDkey++;
+    }
     public Account (String typeAccount, double balance) {               
         this.IDaccount =IDkey;
         IDkey++;
@@ -94,7 +98,9 @@ public class Account{
     public String getType(){
         return this.typeAccount;
     }
-    
+    public void setType(String type){
+        this.typeAccount = type;
+    }
     /**
      * String info of the account
      * @return String representation of the account

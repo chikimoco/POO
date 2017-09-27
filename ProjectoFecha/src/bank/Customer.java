@@ -1,4 +1,4 @@
-package projectofecha;
+package bank;
 
 /**
  * Class Customer
@@ -21,7 +21,13 @@ public class Customer{
      * increases this by one
      * @param firstName sets the name of the client
      * @param lastName sets the lastname of the client
-     */   
+     */
+    public Customer(int id, String firstName, String lastName ){
+        this.IDCustomer = id;
+        IDkey++;
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
     public Customer (String firstName, String lastName) {
         this.IDCustomer =IDkey;
         IDkey++;
@@ -108,7 +114,15 @@ public class Customer{
         }
         return flag;
     }
-    
+    public boolean setAcount(int id){
+        boolean flag = false;
+        if(numberOfAccounts < accounts.length ){
+            accounts[numberOfAccounts] = new Account(id);
+            numberOfAccounts++;
+            flag = true;
+        }
+        return flag;
+    }
     /**
      * Method removeAccount
      * remove a account searching his unique id in the vector of accounts

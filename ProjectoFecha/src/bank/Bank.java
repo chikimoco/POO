@@ -1,4 +1,4 @@
-package projectofecha;
+package bank;
 
 /**
  * Class Bank Creates new types of Banks
@@ -95,7 +95,9 @@ public class Bank{
         }
         return temp;
     }
-    
+    public int getNumberOfCustomers(){
+        return this.numberOfCustomers;
+    }
     /**
      * Method toString
      * Return a String representation of each clients and his Accounts
