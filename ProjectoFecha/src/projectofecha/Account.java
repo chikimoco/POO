@@ -12,7 +12,7 @@ public class Account{
     
     private static int IDkey;//Global variable for new ID´s
     private int IDaccount;//Id of the account
-    private double balance; // Balance of the account
+    protected double balance; // Balance of the account
     private String typeAccount;//Type Of Account credit or debit
     
     /**
