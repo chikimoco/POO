@@ -1,31 +1,31 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package projectofecha;
 
 /**
- *
+ * Class Test Bank
+ * Class for test the banks project
  * @author edgar.cambranes
  */
 public class TestBank {
     
    public static void main(String[] args) {
+       //Creates a new bank
        Bank narcobanco = new Bank(100);
-       
+       //Create five clients
        Customer client1 = new Customer("Chapo","Guzman", 10);
        Customer client2 = new Customer("Pablo","Escobar", 10);
        Customer client3 = new Customer("Amado","Carrillo", 10);
        Customer client4 = new Customer("Carlos","Salinas", 10);
        Customer client5 = new Customer("Rosario","Robles", 10);
        
+       //Add the five customers to the created bank
        narcobanco.addCustomer(client1);
        narcobanco.addCustomer(client2);
        narcobanco.addCustomer(client3);
        narcobanco.addCustomer(client4);
        narcobanco.addCustomer(client5);
        
+       /*Creates new accounts with the specified type of account and balance
+       and are added to the created clients*/
        client1.addAccount(new Account(Account.DEBIT, 1200));
        client1.addAccount(new Account(Account.CREDIT, 34000));
        
@@ -40,13 +40,21 @@ public class TestBank {
        client5.addAccount(new Account(Account.DEBIT, 12345));
        
        
-       
+       //Print the String representation of the bank
        System.out.println(narcobanco);
        
+       //test of transfers
+       client2.myTransferDD(2, 3, 500);
+       client2.myTransferDC(2, 4, 500);
+       client1.thirdTransferDD(0, client5, 7, 1000);
+       
+       //Print the String representation of the bank
+       System.out.println("\n********\n");
+       System.out.println(narcobanco);
        
      
 
    
-   }
+   }//End of Main
     
-}
+}//End of class
